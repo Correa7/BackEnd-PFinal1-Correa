@@ -1,0 +1,24 @@
+{
+  "name": "backend-pfinal1-correa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Correa7/BackEnd-PFinal1-Correa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Correa7/BackEnd-PFinal1-Correa/issues"
+  },
+  "homepage": "https://github.com/Correa7/BackEnd-PFinal1-Correa#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "uuid4": "^2.0.3"
+  }
+}
