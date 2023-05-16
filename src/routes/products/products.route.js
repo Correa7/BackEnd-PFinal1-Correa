@@ -54,18 +54,27 @@ router.get('/:pId', (req,res)=>{
 router.get('/', (req,res)=>{
     let product = new ProductManager("./src/routes/products/Products.json");
     let products = product.getProducts()
-    console.log(products)
     let {limit} = req.query;
     let intLimit= parseInt(limit)
     if(!intLimit){
-        res.send(products)
+        // res.send(products)
+        res.render('home', {
+            products:products,
+            style:'products.css',
+            title:'Products'
+        })
     }
     else{
         prod=[]
         for(let i=0; i < intLimit; i++){
         prod.push(products[i])
         }
-        res.send(prod)
+        res.render('home',{
+            products:prod, 
+            style:'products.css',
+            title:'Products'
+        })
+        // res.send(products)
     }
 })
 
