@@ -39,17 +39,13 @@ class ProductManager {
         console.log("ERROR: ---> upDateProduct");
     }
   }
-  async deleteProduct(id) {
-    try {
-        let read = await fs.promises.readFile(this.path, "utf-8");
+  deleteProduct(id) {
+    
+        let read = fs.readFileSync(this.path, "utf-8");
         let parse = JSON.parse(read);
         let productoFiltrado = parse.filter((i) => i.id !== id);
-        await fs.promises.writeFile(this.path,JSON.stringify(productoFiltrado, null,2),"utf-8");
+        fs.writeFileSync(this.path,JSON.stringify(productoFiltrado, null,2),"utf-8");
         console.log(`Product id: ${id} Deleted`)      
-    } 
-    catch {
-        console.log("ERROR: ---> deleteProduct");
-    }
   }
   getProducts() {
     let archive = fs.existsSync(this.path);

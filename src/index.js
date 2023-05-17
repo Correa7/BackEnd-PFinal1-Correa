@@ -13,6 +13,7 @@ const routesCart = require('./routes/cart/cart.route')
 app.use('/cart', routesCart)
 const routesRealTime = require('./routes/realTimeProduct/realTimeProduct.route')
 app.use('/realTimeProducts', routesRealTime)
+
 // Handlebars
 const handlebars = require('express-handlebars')
 app.engine('handlebars', handlebars.engine())
@@ -25,9 +26,29 @@ const http = require('http')
 const server = http.createServer(app)
 const io = new Server(server)
 
+// Importamos productManager
+const ProductManager = require('./routes/products/ProductManager')
+
 io.on('connection', (socket)=>{
     console.log('New User connected')
-    socket.emit('wellcome','Wellcome new User')
+    socket.emit('wellcome','Wellcome new User') 
+
+    // Comunicacion con realTimeProduct.js
+    socket.on('addProduct' ,(data)=>{
+        let product = new ProductManager("./src/routes/products/Products.json");
+        product.addProduct(data)
+        let newData = product.getProducts()
+        io.sockets.emit('newData', newData)
+
+    })
+    socket.on('delProduct',(data)=>{
+        let {id} =data
+        let pId = parseInt(id)
+        let product = new ProductManager("./src/routes/products/Products.json");
+        product.deleteProduct(pId)
+        let newData = product.getProducts()
+        io.sockets.emit('newData', newData)
+    })
 })
 
 app.get('/', (req,res)=> {

@@ -1,16 +1,5 @@
 [
   {
-    "title": "Cable HDMI",
-    "description": "Elect",
-    "price": 100,
-    "thumbnail": "Sin imagen",
-    "code": "E7",
-    "stock": 20,
-    "category": "",
-    "status": true,
-    "id": 72
-  },
-  {
     "title": "tv",
     "description": "Electrodomestico",
     "price": 100,
@@ -42,17 +31,6 @@
     "category": "",
     "status": true,
     "id": 28
-  },
-  {
-    "title": "Reloj",
-    "description": "Elect",
-    "price": 100,
-    "thumbnail": "Sin imagen",
-    "code": "E1",
-    "stock": 20,
-    "category": "",
-    "status": true,
-    "id": 5
   },
   {
     "title": "Headphone",

@@ -5,7 +5,7 @@ const express = require('express')
 const { Router } = express
 
 const router = new Router()
-
+ 
 router.use(express.json())
 router.use(express.urlencoded({extended:true}))
 
@@ -62,7 +62,7 @@ router.get('/', (req,res)=>{
             products:products,
             style:'products.css',
             title:'Products'
-        })
+        }) 
     }
     else{
         prod=[]
@@ -100,6 +100,9 @@ router.delete('/:pId', (req,res)=>{
     product.deleteProduct(pId)
     res.send('Metodo Delete product')
 }) 
+
+
+
 
 module.exports = router
 
